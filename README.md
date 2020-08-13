@@ -1,7 +1,7 @@
 # COVID-19-Hierarchy-model
 Simulation and model-fitting code for manuscript by Karatayev, Anand, and Bauch.
 
-covidHier0.4Github contains functions to fit and simulate the model
+covidHier0.35Github contains functions to fit and simulate the model
 
 covidHierData.rds contains the following objects:
 
