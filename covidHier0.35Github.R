@@ -193,11 +193,13 @@ SpatiotempPlot=function (spacetime, Xax = 1:dim(spacetime)[2], Yax = 1:dim(space
 
 
 #Running best-fit, local strategy model. Not changing any parameters upon re-opening, so retest does not exist. 
+#Set whether using the best local (G=0) or global (G=1) strategy
+G=0; parms[,"Tl"]=G+(1-G)*exp(-8.86); parms[,"Tg"]=(1-G)+G*3.275252e-05; inClen=75;
 x=(msim3(m3iter,parms,365,plotgive="TS",seed0=1,InitInf=c(2)));
 SpatiotempPlot(log(apply(x[,2:10,],c(1,3),sum)),figtitle="Log # sick (E+A+I)",YaxN="County",XaxN="Day")
-SpatiotempPlot(log(apply(x[,Tk,],c(1,3),sum)),figtitle="Log # sick and tested",YaxN="County",XaxN="Day")
 SpatiotempPlot(x[,"C",],figtitle="Closures enacted (red)",YaxN="County",XaxN="Day")
-SpatiotempPlot((diag(1/parms[,"N"])%*%apply(x[,2:10,],c(1,3),sum)),figtitle="Proportion of county pops sick",YaxN="County",XaxN="Day")
+SpatiotempPlot(log(apply(x[,Tk,],c(1,3),sum)),figtitle="Log # sick and tested",YaxN="County",XaxN="Day")
+
 
 
 
